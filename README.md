@@ -1,0 +1,2 @@
+- 建表语句在根目录下 security.sql
+- 登录接口为 /system/login 具体参考[SecurityConfig](./src/main/java/com/lzj/my/spring/security/security/configure/SecurityConfig.java)#tokenLoginFilter

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lzj.my.spring.security.mapper.RoleMapper">
+  <resultMap id="BaseResultMap" type="com.lzj.my.spring.security.domain.Role">
+    <!--@mbg.generated generated on Sun Jan 05 14:36:56 GMT+08:00 2020.-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+    <result column="role_desc" jdbcType="VARCHAR" property="roleDesc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Sun Jan 05 14:36:56 GMT+08:00 2020.-->
+    id, role_name, role_desc
+  </sql>
+</mapper>

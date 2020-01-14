@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lzj.my.spring.security.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.lzj.my.spring.security.domain.User">
+    <!--@mbg.generated generated on Sun Jan 05 15:03:32 GMT+08:00 2020.-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="team" jdbcType="VARCHAR" property="team" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="last_change_password_time" jdbcType="TIMESTAMP" property="lastChangePasswordTime" />
+    <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Sun Jan 05 15:03:32 GMT+08:00 2020.-->
+    id, username, `password`, mobile, team, channel_code, `status`, create_time,
+    update_time, last_change_password_time, last_login_time
+  </sql>
+</mapper>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lzj.my.spring.security.mapper.PermissionMapper">
+    <resultMap id="BaseResultMap" type="com.lzj.my.spring.security.domain.Permission">
+        <!--@mbg.generated generated on Wed Jan 08 16:40:06 CST 2020.-->
+        <!--@Table t_permission-->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="pid" jdbcType="INTEGER" property="pid"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="icon" jdbcType="VARCHAR" property="icon"/>
+        <result column="permission_type" jdbcType="INTEGER" property="permissionType"/>
+        <result column="url" jdbcType="VARCHAR" property="url"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="sort" jdbcType="INTEGER" property="sort"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated generated on Wed Jan 08 16:40:06 CST 2020.-->
+        id, pid, `name`, icon, permission_type, url, `status`, create_time, update_time,
+        sort
+    </sql>
+
+    <select id="selectPermissionsByUsername" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM t_permission p
+        INNER JOIN t_role_permission rp on p.id=rp.permission_id
+        INNER JOIN t_role r on rp.role_id = r.id
+        INNER JOIN t_user_role ur on r.id = ur.role_id
+        INNER JOIN t_user u on ur.user_id = u.id
+        WHERE u.username = #{username} and p.status = 3
+    </select>
+    <select id="selectUrlByRoleIds" resultType="java.lang.String">
+        SELECT DISTINCT url FROM t_permission p INNER JOIN t_role_permission rp on p.id=rp.permission_id
+        INNER JOIN t_role r ON rp.role_id = r.id WHERE
+        r.id IN
+        <foreach collection="roleIds" open="(" separator="," close=")" item="roleId">
+            #{roleId}
+        </foreach>
+        AND p.permission_type=3
+        AND p.status=1
+    </select>
+</mapper>
